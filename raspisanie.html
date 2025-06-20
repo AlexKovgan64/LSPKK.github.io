@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание занятий</title>
+    <link rel="icon" href="/free-icon-graduation-hat-8276765.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .schedule-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .schedule-header {
+            background-color: #4a76a8;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .schedule-week {
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .schedule-day {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .schedule-day:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .schedule-day.active {
+            background-color: #e1e8f0;
+            font-weight: bold;
+            border-bottom: 2px solid #4a76a8;
+        }
+        
+        .schedule-content {
+            padding: 20px;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .schedule-table th {
+            background-color: #f2f6fa;
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .schedule-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .schedule-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .time-column {
+            width: 15%;
+            color: #666;
+        }
+        
+        .subject-column {
+            width: 35%;
+        }
+        
+        .teacher-column {
+            width: 30%;
+            color: #555;
+        }
+        
+        .room-column {
+            width: 20%;
+            text-align: center;
+        }
+        
+        .room-number {
+            display: inline-block;
+            background-color: #e1e8f0;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .day-schedule {
+            display: none;
+        }
+        
+        .day-schedule.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="schedule-container">
+        <div class="schedule-header">
+            Расписание занятий
+        </div>
+        
+        <div class="schedule-week">
+            <div class="schedule-day active" data-day="monday">Понедельник</div>
+            <div class="schedule-day" data-day="tuesday">Вторник</div>
+            <div class="schedule-day" data-day="wednesday">Среда</div>
+            <div class="schedule-day" data-day="thursday">Четверг</div>
+            <div class="schedule-day" data-day="friday">Пятница</div>
+        </div>
+        
+        <div class="schedule-content">
+            <!-- Понедельник -->
+            <div class="day-schedule active" id="monday">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="time-column">Время</th>
+                            <th class="subject-column">Предмет</th>
+                            <th class="teacher-column">Преподаватель</th>
+                            <th class="room-column">Аудитория</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-column">09:00 - 10:30</td>
+                            <td class="subject-column">Математический анализ</td>
+                            <td class="teacher-column">Харченко М.В.</td>
+                            <td class="room-column"><span class="room-number">304</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">10:40 - 12:10</td>
+                            <td class="subject-column">Линейная алгебра</td>
+                            <td class="teacher-column">Лысенко Д.А.</td>
+                            <td class="room-column"><span class="room-number">215</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">12:20 - 13:50</td>
+                            <td class="subject-column">Физика</td>
+                            <td class="teacher-column">Бойко А.С.</td>
+                            <td class="room-column"><span class="room-number">410</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">14:30 - 16:00</td>
+                            <td class="subject-column">Иностранный язык</td>
+                            <td class="teacher-column">Шитива И.М.</td>
+                            <td class="room-column"><span class="room-number">112</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Вторник -->
+            <div class="day-schedule" id="tuesday">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="time-column">Время</th>
+                            <th class="subject-column">Предмет</th>
+                            <th class="teacher-column">Преподаватель</th>
+                            <th class="room-column">Аудитория</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-column">08:00 - 09:30</td>
+                            <td class="subject-column">История</td>
+                            <td class="teacher-column">Асеева И.В.</td>
+                            <td class="room-column"><span class="room-number">105</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">09:40 - 11:10</td>
+                            <td class="subject-column">Программирование</td>
+                            <td class="teacher-column">Добровольская А.А.</td>
+                            <td class="room-column"><span class="room-number">Комп. класс 1</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">11:20 - 12:50</td>
+                            <td class="subject-column">Физкультура</td>
+                            <td class="teacher-column">Тронь А.В.</td>
+                            <td class="room-column"><span class="room-number">Спортзал</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Среда -->
+            <div class="day-schedule" id="wednesday">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="time-column">Время</th>
+                            <th class="subject-column">Предмет</th>
+                            <th class="teacher-column">Преподаватель</th>
+                            <th class="room-column">Аудитория</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-column">10:00 - 11:30</td>
+                            <td class="subject-column">Дискретная математика</td>
+                            <td class="teacher-column">Добровольская А.А.</td>
+                            <td class="room-column"><span class="room-number">208</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">11:40 - 13:10</td>
+                            <td class="subject-column">Физика (лаб.)</td>
+                            <td class="teacher-column">Бойко А.С</td>
+                            <td class="room-column"><span class="room-number">Лаб. 301</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">13:50 - 15:20</td>
+                            <td class="subject-column">Английский язык</td>
+                            <td class="teacher-column">Гамаюнова Е.И.</td>
+                            <td class="room-column"><span class="room-number">115</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">15:30 - 17:00</td>
+                            <td class="subject-column">Алгоритмы и структуры данных</td>
+                            <td class="teacher-column">Милушкин А.В.</td>
+                            <td class="room-column"><span class="room-number">Комп. класс 2</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Четверг -->
+            <div class="day-schedule" id="thursday">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="time-column">Время</th>
+                            <th class="subject-column">Предмет</th>
+                            <th class="teacher-column">Преподаватель</th>
+                            <th class="room-column">Аудитория</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-column">09:00 - 10:30</td>
+                            <td class="subject-column">Математический анализ</td>
+                            <td class="teacher-column">Иванов А.П.</td>
+                            <td class="room-column"><span class="room-number">304</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">10:40 - 12:10</td>
+                            <td class="subject-column">Теория вероятностей</td>
+                            <td class="teacher-column">Петрова С.М.</td>
+                            <td class="room-column"><span class="room-number">215</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">12:20 - 13:50</td>
+                            <td class="subject-column">Физкультура</td>
+                            <td class="teacher-column">Волков П.А.</td>
+                            <td class="room-column"><span class="room-number">Спортзал</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Пятница -->
+            <div class="day-schedule" id="friday">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th class="time-column">Время</th>
+                            <th class="subject-column">Предмет</th>
+                            <th class="teacher-column">Преподаватель</th>
+                            <th class="room-column">Аудитория</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-column">08:00 - 09:30</td>
+                            <td class="subject-column">Базы данных</td>
+                            <td class="teacher-column">Алексеев Д.С.</td>
+                            <td class="room-column"><span class="room-number">Комп. класс 3</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">09:40 - 11:10</td>
+                            <td class="subject-column">Философия</td>
+                            <td class="teacher-column">Соколова Л.Д.</td>
+                            <td class="room-column"><span class="room-number">103</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">11:20 - 12:50</td>
+                            <td class="subject-column">Программирование (лаб.)</td>
+                            <td class="teacher-column">Алексеев Д.С.</td>
+                            <td class="room-column"><span class="room-number">Комп. класс 1</span></td>
+                        </tr>
+                        <tr>
+                            <td class="time-column">13:30 - 15:00</td>
+                            <td class="subject-column">Экономика</td>
+                            <td class="teacher-column">Козлов М.С.</td>
+                            <td class="room-column"><span class="room-number">210</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const days = document.querySelectorAll('.schedule-day');
+            const daySchedules = document.querySelectorAll('.day-schedule');
+            
+            days.forEach(day => {
+                day.addEventListener('click', function() {
+                    // Удаляем активный класс у всех дней
+                    days.forEach(d => d.classList.remove('active'));
+                    // Добавляем активный класс текущему дню
+                    this.classList.add('active');
+                    
+                    // Скрываем все расписания
+                    daySchedules.forEach(schedule => schedule.classList.remove('active'));
+                    // Показываем расписание для выбранного дня
+                    const dayId = this.getAttribute('data-day');
+                    document.getElementById(dayId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
